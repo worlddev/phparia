@@ -51,7 +51,7 @@ class Events extends AriClientAware
         ]);
 
         $events = [];
-        foreach (\GuzzleHttp\json_decode($response->getBody()) as $event) {
+        foreach (json_decode($response->getBody()) as $event) {
             $events[] = new Event($this->client, $event);
         }
 

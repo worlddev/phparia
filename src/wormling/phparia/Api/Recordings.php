@@ -43,7 +43,7 @@ class Recordings extends AriClientAware
         $response = $this->client->getEndpoint()->get($uri);
 
         $recordings = [];
-        foreach (\GuzzleHttp\json_decode($response->getBody()) as $recording) {
+        foreach (json_decode($response->getBody()) as $recording) {
             $recordings[] = new StoredRecording($recording);
         }
 
@@ -66,7 +66,7 @@ class Recordings extends AriClientAware
             $this->processRequestException($e);
         }
 
-        return new StoredRecording(\GuzzleHttp\json_decode($response->getBody()));
+        return new StoredRecording(json_decode($response->getBody()));
     }
 
     /**
@@ -108,7 +108,7 @@ class Recordings extends AriClientAware
             $this->processRequestException($e);
         }
 
-        return new StoredRecording(\GuzzleHttp\json_decode($response->getBody()));
+        return new StoredRecording(json_decode($response->getBody()));
     }
 
     /**
@@ -127,7 +127,7 @@ class Recordings extends AriClientAware
             $this->processRequestException($e);
         }
 
-        return new LiveRecording($this->client, \GuzzleHttp\json_decode($response->getBody()));
+        return new LiveRecording($this->client, json_decode($response->getBody()));
     }
 
     /**

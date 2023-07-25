@@ -63,7 +63,7 @@ class Asterisk extends AriClientAware
         }
 
         $configTuples = [];
-        foreach (\GuzzleHttp\json_decode($response->getBody()) as $configTuple) {
+        foreach (json_decode($response->getBody()) as $configTuple) {
             $configTuples[] = new ConfigTuple($configTuple);
         }
 
@@ -97,7 +97,7 @@ class Asterisk extends AriClientAware
         }
 
         $configTuples = [];
-        foreach (\GuzzleHttp\json_decode($response->getBody()) as $configTuple) {
+        foreach (json_decode($response->getBody()) as $configTuple) {
             $configTuples[] = new ConfigTuple($configTuple);
         }
 
@@ -139,7 +139,7 @@ class Asterisk extends AriClientAware
         }
         $response = $this->client->getEndpoint()->get($uri);
 
-        return new AsteriskInfo(\GuzzleHttp\json_decode($response->getBody()));
+        return new AsteriskInfo(json_decode($response->getBody()));
     }
 
     /**
@@ -154,7 +154,7 @@ class Asterisk extends AriClientAware
         $response = $this->client->getEndpoint()->get($uri);
 
         $modules = [];
-        foreach (\GuzzleHttp\json_decode($response->getBody()) as $module) {
+        foreach (json_decode($response->getBody()) as $module) {
             $modules[] = new Module($module);
         }
 
@@ -175,7 +175,7 @@ class Asterisk extends AriClientAware
 
         $response = $this->client->getEndpoint()->get($uri);
 
-        return new Module(\GuzzleHttp\json_decode($response->getBody()));
+        return new Module(json_decode($response->getBody()));
     }
 
     /**
@@ -234,7 +234,7 @@ class Asterisk extends AriClientAware
         $response = $this->client->getEndpoint()->get($uri);
 
         $logChannels = [];
-        foreach (\GuzzleHttp\json_decode($response->getBody()) as $logChannel) {
+        foreach (json_decode($response->getBody()) as $logChannel) {
             $logChannels[] = new Module($logChannel);
         }
 
@@ -315,7 +315,7 @@ class Asterisk extends AriClientAware
             $this->processRequestException($e);
         }
 
-        return new Variable(\GuzzleHttp\json_decode($response->getBody()));
+        return new Variable(json_decode($response->getBody()));
     }
 
     /**

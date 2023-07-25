@@ -43,7 +43,7 @@ class Bridges extends MediaBase
         $response = $this->client->getEndpoint()->get($uri);
 
         $bridges = [];
-        foreach (\GuzzleHttp\json_decode($response->getBody()) as $bridge) {
+        foreach (json_decode($response->getBody()) as $bridge) {
             $bridges[] = new Bridge($this->client, $bridge);
         }
 
@@ -69,7 +69,7 @@ class Bridges extends MediaBase
             ]
         ]);
 
-        return new Bridge($this->client, \GuzzleHttp\json_decode($response->getBody()));
+        return new Bridge($this->client, json_decode($response->getBody()));
     }
 
     /**
@@ -90,7 +90,7 @@ class Bridges extends MediaBase
             ]
         ]);
 
-        return new Bridge($this->client, \GuzzleHttp\json_decode($response->getBody()));
+        return new Bridge($this->client, json_decode($response->getBody()));
     }
 
     /**
@@ -109,7 +109,7 @@ class Bridges extends MediaBase
             $this->processRequestException($e);
         }
 
-        return new Bridge($this->client, \GuzzleHttp\json_decode($response->getBody()));
+        return new Bridge($this->client, json_decode($response->getBody()));
     }
 
     /**

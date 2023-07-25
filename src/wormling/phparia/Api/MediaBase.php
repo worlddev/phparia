@@ -116,7 +116,7 @@ abstract class MediaBase extends AriClientAware
             $this->processRequestException($e);
         }
 
-        return new Playback($this->client, \GuzzleHttp\json_decode($response->getBody()));
+        return new Playback($this->client, json_decode($response->getBody()));
     }
 
     /**
@@ -158,7 +158,7 @@ abstract class MediaBase extends AriClientAware
             $this->processRequestException($e);
         }
 
-        return new Playback($this->client, \GuzzleHttp\json_decode($response->getBody()));
+        return new Playback($this->client, json_decode($response->getBody()));
     }
 
     /**
@@ -206,6 +206,6 @@ abstract class MediaBase extends AriClientAware
             $this->processRequestException($e);
         }
 
-        return new LiveRecording($this->client, \GuzzleHttp\json_decode($response->getBody()));
+        return new LiveRecording($this->client, json_decode($response->getBody()));
     }
 }

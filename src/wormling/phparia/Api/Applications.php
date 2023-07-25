@@ -44,7 +44,7 @@ class Applications extends AriClientAware
         $response = $this->client->getEndpoint()->get($uri);
 
         $applications = [];
-        foreach (\GuzzleHttp\json_decode($response->getBody()) as $application) {
+        foreach (json_decode($response->getBody()) as $application) {
             $applications[] = new Application($this->client, $application);
         }
 
@@ -67,7 +67,7 @@ class Applications extends AriClientAware
             $this->processRequestException($e);
         }
 
-        return new Application($this->client, \GuzzleHttp\json_decode($response->getBody()));
+        return new Application($this->client, json_decode($response->getBody()));
     }
 
     /**
@@ -93,7 +93,7 @@ class Applications extends AriClientAware
             $this->processRequestException($e);
         }
 
-        return new Application($this->client, \GuzzleHttp\json_decode($response->getBody()));
+        return new Application($this->client, json_decode($response->getBody()));
     }
 
     /**
@@ -109,13 +109,13 @@ class Applications extends AriClientAware
      */
     public function unsubscribe($applicationName, $eventSource)
     {
-        $uri = "applications/$applicationName/subscription?eventSource=".\GuzzleHttp\json_encode($eventSource);
+        $uri = "applications/$applicationName/subscription?eventSource=".json_encode($eventSource);
         try {
             $response = $this->client->getEndpoint()->delete($uri);
         } catch (RequestException $e) {
             $this->processRequestException($e);
         }
 
-        return new Application($this->client, \GuzzleHttp\json_decode($response->getBody()));
+        return new Application($this->client, json_decode($response->getBody()));
     }
 }

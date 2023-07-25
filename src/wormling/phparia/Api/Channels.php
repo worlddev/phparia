@@ -60,7 +60,7 @@ class Channels extends MediaBase
         $response = $this->client->getEndpoint()->get($uri);
 
         $channels = [];
-        foreach (\GuzzleHttp\json_decode($response->getBody()) as $channel) {
+        foreach (json_decode($response->getBody()) as $channel) {
             $channels[] = new Channel($this->client, $channel);
         }
 
@@ -127,7 +127,7 @@ class Channels extends MediaBase
             $this->processRequestException($e);
         }
 
-        return new Channel($this->client, \GuzzleHttp\json_decode($response->getBody()));
+        return new Channel($this->client, json_decode($response->getBody()));
     }
 
     /**
@@ -146,7 +146,7 @@ class Channels extends MediaBase
             $this->processRequestException($e);
         }
 
-        return new Channel($this->client, \GuzzleHttp\json_decode($response->getBody()));
+        return new Channel($this->client, json_decode($response->getBody()));
     }
 
     /**
@@ -208,7 +208,7 @@ class Channels extends MediaBase
             $this->processRequestException($e);
         }
 
-        return new Channel($this->client, \GuzzleHttp\json_decode($response->getBody()));
+        return new Channel($this->client, json_decode($response->getBody()));
     }
 
     /**
@@ -406,7 +406,7 @@ class Channels extends MediaBase
      */
     public function unmute($channelId, $direction)
     {
-        $uri = "channels/$channelId/mute?direction=".\GuzzleHttp\json_encode($direction);
+        $uri = "channels/$channelId/mute?direction=".json_encode($direction);
         try {
             $this->client->getEndpoint()->delete($uri);
         } catch (RequestException $e) {
@@ -514,7 +514,7 @@ class Channels extends MediaBase
             }
         }
 
-        return new Variable(\GuzzleHttp\json_decode($response->getBody()));
+        return new Variable(json_decode($response->getBody()));
     }
 
     /**
@@ -559,7 +559,7 @@ class Channels extends MediaBase
             $this->processRequestException($e);
         }
 
-        return new Variable(\GuzzleHttp\json_decode($response->getBody()));
+        return new Variable(json_decode($response->getBody()));
     }
 
     /**
@@ -609,7 +609,7 @@ class Channels extends MediaBase
             $this->processRequestException($e);
         }
 
-        return new Channel($this->client, \GuzzleHttp\json_decode($response->getBody()));
+        return new Channel($this->client, json_decode($response->getBody()));
     }
 
     /**
@@ -641,7 +641,7 @@ class Channels extends MediaBase
             $this->processRequestException($e);
         }
 
-        return new Channel($this->client, \GuzzleHttp\json_decode($response->getBody()));
+        return new Channel($this->client, json_decode($response->getBody()));
     }
 
     /**

@@ -46,7 +46,7 @@ class Endpoints extends AriClientAware
         $response = $this->client->getEndpoint()->get($uri);
 
         $endpoints = [];
-        foreach (\GuzzleHttp\json_decode($response->getBody()) as $endpoint) {
+        foreach (json_decode($response->getBody()) as $endpoint) {
             $endpoints[] = new Endpoint($this->client, $endpoint);
         }
 
@@ -96,7 +96,7 @@ class Endpoints extends AriClientAware
         }
 
         $endpoints = [];
-        foreach (\GuzzleHttp\json_decode($response->getBody()) as $endpoint) {
+        foreach (json_decode($response->getBody()) as $endpoint) {
             $endpoints[] = new Endpoint($this->client, $endpoint);
         }
 
@@ -121,7 +121,7 @@ class Endpoints extends AriClientAware
             $this->processRequestException($e);
         }
 
-        return new Endpoint($this->client, \GuzzleHttp\json_decode($response->getBody()));
+        return new Endpoint($this->client, json_decode($response->getBody()));
     }
 
     /**

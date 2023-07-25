@@ -41,7 +41,7 @@ class Mailboxes extends AriClientAware
         $response = $this->client->getEndpoint()->get($uri);
 
         $mailboxes = [];
-        foreach (\GuzzleHttp\json_decode($response->getBody()) as $mailbox) {
+        foreach (json_decode($response->getBody()) as $mailbox) {
             $mailboxes[] = new Mailbox($mailbox);
         }
 
@@ -64,7 +64,7 @@ class Mailboxes extends AriClientAware
             $this->processRequestException($e);
         }
 
-        return new Mailbox(\GuzzleHttp\json_decode($response->getBody()));
+        return new Mailbox(json_decode($response->getBody()));
     }
 
     /**

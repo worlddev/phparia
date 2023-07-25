@@ -52,7 +52,7 @@ class DeviceStates extends AriClientAware
         $response = $this->client->getEndpoint()->get($uri);
 
         $deviceStates = [];
-        foreach (\GuzzleHttp\json_decode($response->getBody()) as $deviceState) {
+        foreach (json_decode($response->getBody()) as $deviceState) {
             $deviceStates[] = new DeviceState($this->client, $deviceState);
         }
 
@@ -70,7 +70,7 @@ class DeviceStates extends AriClientAware
         $uri = "deviceStates/$deviceName";
         $response = $this->client->getEndpoint()->get($uri);
 
-        return new DeviceState($this->client, \GuzzleHttp\json_decode($response->getBody()));
+        return new DeviceState($this->client, json_decode($response->getBody()));
     }
 
     /**
